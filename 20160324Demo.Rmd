@@ -40,3 +40,9 @@ url <- gsub(domain, "", url)
 url <- paste0(domain, url)
 applenews <- data.frame(time =time, title= title, category = category, url = url)
 ```
+
+# 取得內容
+```{r}
+applenews$url <- as.character(applenews$url)
+applenews$content <- sapply(applenews$url, function(e){read_html(e) %>% html_nodes('.articulum.trans') %>% html_text() %>% iconv(from='UTF-8', to='UTF-8') } )
+```
