@@ -21,5 +21,10 @@ apple <- read_html(newsurl, encoding="UTF-8")
 ```{r}
 apple %>% html_nodes('li.rtddt') %>% iconv(from='UTF-8', to='UTF-8') 
 
+rtddt <- apple %>% html_nodes('.rtddt')  
+time <- rtddt %>% html_nodes('time') %>% html_text() %>% iconv(from='UTF-8', to='UTF-8')
+title <- rtddt %>% html_nodes('h1') %>% html_text() %>% iconv(from='UTF-8', to='UTF-8')
+category <- rtddt %>% html_nodes('h2') %>% html_text() %>% iconv(from='UTF-8', to='UTF-8')
 
+applenews <- data.frame(time =time, title= title, category = category)
 ```
