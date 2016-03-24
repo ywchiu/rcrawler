@@ -1,7 +1,7 @@
 ---
 title: "shiny_demo"
 author: "David Chiu"
-date: "2016年2月28日"
+date: "2016年3月24日"
 output: html_document
 ---
 ```{r, include=TRUE, warning=FALSE, echo=FALSE}
@@ -9,7 +9,7 @@ output: html_document
 library(rvest)
 ```
 
-# Get page source
+# 抓取網頁原始碼
 ```{r}
 newsurl <- "http://www.appledaily.com.tw/realtimenews/section/new/"
 apple <- read_html(newsurl, encoding="UTF-8")
@@ -17,7 +17,7 @@ apple <- read_html(newsurl, encoding="UTF-8")
 
 ```
 
-# Extract Tags
+# 抽取列表資訊
 ```{r}
 apple %>% html_nodes('li.rtddt') %>% iconv(from='UTF-8', to='UTF-8') 
 
