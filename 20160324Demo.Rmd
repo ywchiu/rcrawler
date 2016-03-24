@@ -27,4 +27,16 @@ title <- rtddt %>% html_nodes('h1') %>% html_text() %>% iconv(from='UTF-8', to='
 category <- rtddt %>% html_nodes('h2') %>% html_text() %>% iconv(from='UTF-8', to='UTF-8')
 
 applenews <- data.frame(time =time, title= title, category = category)
+
+
+
+```
+# 增加網路連結
+```{r}
+domain <- 'http://www.appledaily.com.tw'
+
+url <- rtddt %>% html_nodes('a') %>% html_attr('href')
+url <- gsub(domain, "", url)
+url <- paste0(domain, url)
+applenews <- data.frame(time =time, title= title, category = category, url = url)
 ```
