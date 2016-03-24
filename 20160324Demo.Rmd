@@ -9,10 +9,17 @@ output: html_document
 library(rvest)
 ```
 
+# Get page source
 ```{r}
 newsurl <- "http://www.appledaily.com.tw/realtimenews/section/new/"
 apple <- read_html(newsurl, encoding="UTF-8")
 
-apple %>% html_nodes('li.rtddt') %>% iconv(from='UTF-8', to='UTF-8') 
+
 ```
 
+# Extract Tags
+```{r}
+apple %>% html_nodes('li.rtddt') %>% iconv(from='UTF-8', to='UTF-8') 
+
+
+```
