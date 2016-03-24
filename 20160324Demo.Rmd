@@ -1,0 +1,18 @@
+---
+title: "shiny_demo"
+author: "David Chiu"
+date: "2016年2月28日"
+output: html_document
+---
+```{r, include=TRUE, warning=FALSE, echo=FALSE}
+#install.packages("rvest")
+library(rvest)
+```
+
+```{r}
+newsurl <- "http://www.appledaily.com.tw/realtimenews/section/new/"
+apple <- read_html(newsurl, encoding="UTF-8")
+
+apple %>% html_nodes('li.rtddt') %>% iconv(from='UTF-8', to='UTF-8') 
+```
+
